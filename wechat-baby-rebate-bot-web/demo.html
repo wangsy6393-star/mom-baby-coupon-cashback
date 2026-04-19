@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BabyCash - 母婴用品返利平台演示</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B98',
+                        secondary: '#7EB6FF',
+                        accent: '#FFD166',
+                        light: '#FFF5F8',
+                        dark: '#2D3748'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .demo-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+        }
+        .demo-nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .demo-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        .demo-nav a {
+            text-decoration: none;
+            color: #6b7280;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .demo-nav a:hover, .demo-nav a.active {
+            color: #FF6B98;
+            background-color: #fef2f7;
+        }
+        .mobile-preview {
+            max-width: 375px;
+            margin: 0 auto;
+            border: 10px solid #000;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .desktop-preview {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .feature-card {
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="demo-nav">
+        <div class="demo-container">
+            <ul>
+                <li><a href="#overview" class="active">产品概述</a></li>
+                <li><a href="#homepage">首页展示</a></li>
+                <li><a href="#dashboard">用户仪表盘</a></li>
+                <li><a href="#features">核心功能</a></li>
+                <li><a href="#deployment">部署说明</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="demo-container">
+        <!-- 产品概述 -->
+        <section id="overview" class="demo-section">
+            <h1 class="text-3xl font-bold text-center mb-6">BabyCash - 母婴用品返利平台</h1>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4">产品介绍</h2>
+                    <p class="text-gray-600 mb-4">
+                        BabyCash是一个专注于母婴用品的优惠券和返利平台，支持淘宝、京东、抖音、拼多多四大电商平台，为用户提供一站式的省钱解决方案。
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        用户只需粘贴商品链接，即可一键查询优惠券和返利信息，让购物更加省钱省心。
+                    </p>
+                    
+                    <h3 class="text-xl font-bold mt-6 mb-3">目标用户</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>有婴儿的家庭，特别是需要购买纸尿裤的父母</li>
+                        <li>孕妇及哺乳期妈妈</li>
+                        <li>关注母婴用品优惠信息的消费者</li>
+                        <li>注重性价比的理性购物者</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-center mb-6">
+                        <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center">
+                            <i class="fa fa-baby-carriage text-white text-3xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">核心优势</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                            <span>专注母婴用品，品类精准</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                            <span>四大平台全覆盖，一站式查询</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                            <span>纸尿裤返利高达10%，行业领先</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                            <span>操作简单，一键查询优惠</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                            <span>提现门槛低，到账速度快</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 首页展示 -->
+        <section id="homepage" class="demo-section">
+            <h2 class="text-2xl font-bold mb-6">首页展示</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">PC端首页</h3>
+                    <div class="desktop-preview">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/b49a9cd31b7c4354a2d50f7335368f45~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=202604191604424353518307EAF3E3646A&rrcfp=f06b921b&x-expires=1779177946&x-signature=bpTKxrjTR82ptwzw3I%2BGFs59UJg%3D" alt="PC端首页" class="w-full">
+                    </div>
+                    <p class="text-gray-600 mt-4">
+                        PC端首页采用现代化的设计风格，顶部导航栏方便用户快速访问各个功能区域，中间的搜索框让用户可以直接粘贴商品链接查询优惠信息。
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">移动端首页</h3>
+                    <div class="mobile-preview">
+                        <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/436d5af68b334b29abca453e8cac248e~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=202604191604424353518307EAF3E3646A&rrcfp=f06b921b&x-expires=1779177969&x-signature=t9d%2F6NIq3mrce%2BVe2Ug%2F5ycVJCY%3D" alt="移动端首页" class="w-full">
+                    </div>
+                    <p class="text-gray-600 mt-4">
+                        移动端首页采用响应式设计，完美适配各种屏幕尺寸，用户可以随时随地查询商品优惠信息，管理自己的返利账户。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <h3 class="text-xl font-bold mb-4">首页主要功能</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="feature-card">
+                        <div class="feature-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">商品优惠查询</h4>
+                        <p class="text-gray-600">粘贴商品链接，一键查询优惠券和返利信息</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-secondary bg-opacity-10 text-secondary">
+                            <i class="fa fa-info-circle"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">平台介绍</h4>
+                        <p class="text-gray-600">了解平台功能、优势和使用方法</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon bg-accent bg-opacity-10 text-accent">
+                            <i class="fa fa-shopping-basket"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">品牌展示</h4>
+                        <p class="text-gray-600">查看支持的母婴品牌列表</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户仪表盘 -->
+        <section id="dashboard" class="demo-section">
+            <h2 class="text-2xl font-bold mb-6">用户仪表盘</h2>
+            
+            <div class="bg-white rounded-xl p-6 shadow-lg mb-8">
+                <h3 class="text-xl font-bold mb-4">仪表盘概览</h3>
+                <p class="text-gray-600 mb-6">
+                    用户仪表盘是用户管理返利账户的中心，包含余额信息、订单管理、提现功能等核心功能。
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-3">余额管理</h4>
+                        <div class="bg-gradient-to-r from-primary to-pink-500 rounded-xl p-4 text-white">
+                            <div class="flex justify-between items-center mb-3">
+                                <span>当前余额</span>
+                                <span class="font-bold text-xl">¥150.50</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>待返利金额</span>
+                                <span class="font-bold">¥20.64</span>
+                            </div>
+                            <button class="mt-4 w-full bg-white text-primary py-2 rounded-lg font-medium">
+                                申请提现
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-bold mb-3">最近订单</h4>
+                        <div class="space-y-3">
+                            <div class="border border-gray-200 rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium">Babycare纸尿裤</span>
+                                    <span class="text-green-500">¥15.92</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-2 text-sm text-gray-500">
+                                    <span>淘宝</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded text-xs">已返利</span>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-medium">好奇金装纸尿裤</span>
+                                    <span class="text-yellow-500">¥20.64</span>
+                                </div>
+                                <div class="flex items-center justify-between mt-2 text-sm text-gray-500">
+                                    <span>京东</span>
+                                    <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded text-xs">待返利</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">商品查询功能</h3>
+                    <div class="mb-4">
+                        <div class="relative">
+                            <input type="text" placeholder="粘贴商品链接，一键查询优惠" class="w-full px-4 py-3 pr-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <button class="absolute right-2 top-2 bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                                <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/super_tool/b49a9cd31b7c4354a2d50f7335368f45~tplv-a9rns2rl98-image.image?lk3s=8e244e95&rcl=202604191604424353518307EAF3E3646A&rrcfp=f06b921b&x-expires=1779177946&x-signature=bpTKxrjTR82ptwzw3I%2BGFs59UJg%3D" alt="商品图片" class="w-8 h-8 object-contain">
+                            </div>
+                            <div>
+                                <h5 class="font-medium">Babycare纸尿裤</h5>
+                                <div class="flex items-center text-sm">
+                                    <span class="text-primary font-bold">¥199</span>
+                                    <span class="text-gray-400 line-through ml-2">¥299</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div>
+                                <p class="text-xs text-gray-500">优惠券</p>
+                                <p class="font-bold text-primary">-¥100</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500">返利</p>
+                                <p class="font-bold text-green-500">¥15.92</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">提现功能</h3>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">提现金额</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-500">¥</span>
+                            <input type="number" value="100" min="10" max="150.50" class="w-full pl-8 pr-3 py-3 rounded-lg border border-gray-300">
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">最低提现金额¥10，提现手续费10%</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">提现方式</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="border border-primary bg-primary bg-opacity-5 rounded-lg p-3 flex items-center cursor-pointer">
+                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-weixin text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">微信零钱</p>
+                                    <p class="text-xs text-gray-500">实时到账</p>
+                                </div>
+                            </div>
+                            <div class="border border-gray-200 rounded-lg p-3 flex items-center cursor-pointer">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-credit-card text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">银行卡</p>
+                                    <p class="text-xs text-gray-500">1-3个工作日</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">提现金额</span>
+                            <span class="font-medium">¥100.00</span>
+                        </div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-gray-600">手续费</span>
+                            <span class="font-medium text-red-500">¥10.00</span>
+                        </div>
+                        <div class="flex justify-between pt-2 border-t border-gray-200">
+                            <span class="font-medium">实际到账</span>
+                            <span class="font-bold text-primary">¥90.00</span>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-primary text-white py-3 rounded-lg font-medium">
+                        确认提现
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心功能 -->
+        <section id="features" class="demo-section">
+            <h2 class="text-2xl font-bold mb-6">核心功能</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-link text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">商品链接解析</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        支持解析淘宝、京东、抖音、拼多多四大平台的商品链接，自动识别商品信息和平台类型。
+                    </p>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-500 mb-2">支持的链接格式：</p>
+                        <ul class="text-sm space-y-1 text-gray-600">
+                            <li>• 淘宝：https://item.taobao.com/item.htm?id=1234567890</li>
+                            <li>• 京东：https://item.jd.com/100008368345.html</li>
+                            <li>• 拼多多：https://mobile.yangkeduo.com/goods.html?goods_id=123456789</li>
+                            <li>• 抖音：https://haohuo.jinritemai.com/views/product/item2?id=345678901234</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-secondary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-tags text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">优惠券查询</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        自动查询商品可用的优惠券信息，包括优惠券金额、使用条件和有效期等。
+                    </p>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-500 mb-2">优惠券类型：</p>
+                        <ul class="text-sm space-y-1 text-gray-600">
+                            <li>• 店铺优惠券</li>
+                            <li>• 平台优惠券</li>
+                            <li>• 品类优惠券</li>
+                            <li>• 隐藏优惠券</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-money text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">返利计算</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        根据不同平台和商品类别自动计算返利金额，让用户清楚了解可以获得的返利。
+                    </p>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-500 mb-2">返利比例：</p>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div>
+                                <p class="font-medium">淘宝/天猫：</p>
+                                <p>纸尿裤 8%</p>
+                                <p>孕妈用品 6%</p>
+                                <p>婴儿用品 7%</p>
+                            </div>
+                            <div>
+                                <p class="font-medium">拼多多：</p>
+                                <p>纸尿裤 9%</p>
+                                <p>孕妈用品 7%</p>
+                                <p>婴儿用品 8%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-exchange text-accent text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">提现功能</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        支持用户将返利余额提现到微信零钱或银行卡，提现门槛低，到账速度快。
+                    </p>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-500 mb-2">提现规则：</p>
+                        <ul class="text-sm space-y-1 text-gray-600">
+                            <li>• 最低提现金额：10元</li>
+                            <li>• 提现手续费：10%</li>
+                            <li>• 微信零钱：实时到账</li>
+                            <li>• 银行卡：1-3个工作日</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 部署说明 -->
+        <section id="deployment" class="demo-section">
+            <h2 class="text-2xl font-bold mb-6">部署说明</h2>
+            
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+                <h3 class="text-xl font-bold mb-4">快速开始</h3>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2">1. 下载项目文件</h4>
+                    <p class="text-gray-600 mb-2">
+                        您已经在以下路径拥有完整的项目文件：
+                    </p>
+                    <div class="bg-gray-100 p-3 rounded font-mono text-sm">
+                        /home/user/vibecoding/workspace/wechat-baby-rebate-bot-web
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2">2. 查看项目结构</h4>
+                    <div class="bg-gray-100 p-3 rounded font-mono text-sm">
+                        <pre>wechat-baby-rebate-bot-web/
+├── app.py                 # Flask后端主程序
+├── requirements.txt       # Python依赖包列表
+├── README.md              # 项目说明文档
+├── start.sh               # 启动脚本
+├── templates/             # HTML模板目录
+│   ├── index.html         # 首页
+│   ├── dashboard.html     # 用户仪表盘
+│   └── login.html         # 登录页面
+└── demo.html              # 演示页面（当前页面）</pre>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2">3. 启动方式</h4>
+                    <p class="text-gray-600 mb-2">
+                        由于当前环境网络限制，无法直接安装依赖包。在实际环境中，您可以通过以下方式启动：
+                    </p>
+                    <div class="bg-gray-100 p-3 rounded font-mono text-sm">
+                        <pre># 方法1：使用启动脚本
+chmod +x start.sh
+./start.sh
+
+# 方法2：手动启动
+pip install -r requirements.txt
+python app.py</pre>
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold mb-2">4. 访问方式</h4>
+                    <p class="text-gray-600 mb-2">
+                        启动成功后，可以通过以下方式访问：
+                    </p>
+                    <div class="bg-gray-100 p-3 rounded font-mono text-sm">
+                        <pre># 首页
+http://localhost:5000
+
+# 用户仪表盘
+http://localhost:5000/dashboard
+
+# 登录页面
+http://localhost:5000/login</pre>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-2">5. 实际部署建议</h4>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fa fa-info-circle text-yellow-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-yellow-700">
+                                    在实际部署时，您需要：<br>
+                                    1. 注册各电商平台联盟账号获取API权限<br>
+                                    2. 创建MongoDB数据库存储用户数据<br>
+                                    3. 配置微信公众号或其他登录方式<br>
+                                    4. 部署到云服务器或使用容器化部署
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="demo-container text-center">
+            <p class="mb-2">BabyCash - 母婴用品返利平台</p>
+            <p class="text-gray-400 text-sm">专注于母婴用品的优惠券和返利服务，让育儿之路更省心省钱</p>
+        </div>
+    </footer>
+
+    <script>
+        // 导航切换
+        document.querySelectorAll('.demo-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有active类
+                document.querySelectorAll('.demo-nav a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                
+                // 添加active类
+                this.classList.add('active');
+                
+                // 滚动到对应区域
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 滚动监听
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.demo-section');
+            const navLinks = document.querySelectorAll('.demo-nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 100 && 
+                    window.pageYOffset < sectionTop + sectionHeight - 100) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
